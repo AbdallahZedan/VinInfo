@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Defenation for Vin Info'
+define service Zui_vininfo {
+  expose zi_vininfo;
+  expose zi_inproceslot;
+}

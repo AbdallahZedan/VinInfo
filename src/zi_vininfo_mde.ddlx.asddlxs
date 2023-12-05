@@ -1,0 +1,57 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: {  typeName: 'Vin Info.',
+                      typeNamePlural: 'All Vin Numbers',
+                      title: { type: #STANDARD, label: 'Vin Number', value: 'VinNumber' } },
+      presentationVariant: [{ sortOrder: [{ by: 'VinNumber', direction: #DESC }] }]
+                     }
+annotate view zi_vininfo with
+{
+
+  @UI.facet: [{ id:'VinNumber' , purpose: #STANDARD , type: #IDENTIFICATION_REFERENCE , label: 'Vin Number Details',
+                         position: 10 }]
+
+  @UI:{ identification: [{ position: 10, label: 'Vin Number' }],
+  lineItem: [{ position: 10, cssDefault: { width: '15rem' } }],
+  selectionField: [{ position: 10 }] }
+  @EndUserText.label: 'Vin Number'
+  VinNumber;
+
+  @Consumption.semanticObject: 'Material'
+  @UI:{ identification: [{ position: 20, label: 'Product Number' }],
+  lineItem: [{  position: 20, cssDefault: { width: '15rem' },
+  type: #FOR_INTENT_BASED_NAVIGATION, semanticObjectAction: 'display' }],
+  selectionField: [{ position: 20 }] }
+  Material;
+
+  @Consumption.semanticObject: 'ProductionOrder'
+  @UI:{ identification: [{ position: 30, label: 'Product Order' }],
+  lineItem: [{
+  type: #FOR_INTENT_BASED_NAVIGATION, semanticObjectAction: 'display',
+   position: 30, cssDefault: { width: '15rem' } }],
+  selectionField: [{ position: 30 }] }
+  ProductionOrder;
+
+
+  @Consumption.semanticObject: 'InspectionLot'
+  @UI:{ identification: [{ position: 50, label: 'Goods Receipt Inspection Lot' }] ,
+  lineItem: [{
+  type:#FOR_INTENT_BASED_NAVIGATION, semanticObjectAction: 'manage',
+  position: 50, cssDefault: { width: '25rem' } }] }
+  @EndUserText.label: 'Goods Receipt Inspection Lot'
+  GoodsReceipt;
+
+
+  @Consumption.semanticObject: 'InspectionOperation'
+  @UI:{ identification: [{ position: 40, label: 'Inprocess Inspection Lot Number' }],
+  lineItem: [{
+  type: #FOR_INTENT_BASED_NAVIGATION, semanticObjectAction: 'displayResults',
+  position: 40, cssDefault: { width: '25rem' } }] }
+  @EndUserText.label: 'Inprocess Inspection Lot Number'
+  InspectionLot;
+  
+  @UI:{ identification: [{ position: 60, label: 'Batch Number' }],
+  lineItem: [{  position: 60, cssDefault: { width: '15rem' } }],
+  selectionField: [{ position: 40 }] }
+  BatchNumber;
+
+}
